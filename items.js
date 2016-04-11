@@ -1024,3 +1024,90 @@ var items = [{
   "has_variations": false,
   "used_manufacturer": false
 }];
+
+function displayValues(arr) {
+  for (var val of arr) {
+    console.log('id',val.listing_id);
+    console.log('currency', val.currency_code);
+    console.log('price', val.price);
+    console.log('----------------------------');
+  }
+}
+
+function displayValuesWithMats(arr) {
+  for (var val of arr) {
+    displayValues(arr);
+    console.log('materials', val.materials);
+    console.log('-------------------------');
+  }
+}
+
+function averagePrice(arr) {
+  var avgPrice = 0;
+  for (var val of arr) {
+    avgPrice += val.price;
+  }
+  return avgPrice / arr.length;
+}
+console.log(averagePrice(items));
+
+function itemsBetween14and18Dollars(arr) {
+  var output = []
+  for (val of arr) {
+    if (val.price > 14.00 && val.price < 18.00) {
+      output.push(val);
+    }
+  }
+  return output;
+}
+
+console.log(displayValues(itemsBetween14and18Dollars(items)));
+
+function filterGBPcode(arr) {
+  var output = [];
+  for (var val of arr) {
+    if (val.currency_code === 'GBP') {
+      output.push(val);
+    }
+  }
+  return output;
+}
+
+console.log(displayValues(filterGBPcode(items)));
+
+function filterMaterialWood(arr) {
+  var output = [];
+  for (var val of arr) {
+      if (arr.val.materials === 'wood') {
+        output.push(val.materials);
+      }
+    }
+  }
+  return output;
+}
+
+console.log(displayValues(filterMaterialWood(items)));
+
+function calculateTotalMaterials(arr) {
+  var output = [];
+  for (var val of arr) {
+    if (val.materials.length >= 8) {
+      output.push(val);
+    }
+  }
+  return output;
+}
+
+console.log(displayValuesWithMats(calculateTotalMaterials(items)));
+
+function calculateWhoMade(arr) {
+  var output = [];
+  for (var val of arr) {
+    if (val.who_made == "i_did") {
+      output.push(val)
+    }
+  }
+  return output.length;
+}
+
+console.log(calculateWhoMade(items));
