@@ -1041,6 +1041,7 @@ function displayValuesWithMats(arr) {
     console.log('-------------------------');
   }
 }
+//Average price function
 
 function averagePrice(arr) {
   var avgPrice = 0;
@@ -1049,7 +1050,9 @@ function averagePrice(arr) {
   }
   return avgPrice / arr.length;
 }
-console.log(averagePrice(items));
+//console.log(averagePrice(items));
+
+//Items between 14 and 18 dollars function
 
 function itemsBetween14and18Dollars(arr) {
   var output = []
@@ -1061,7 +1064,9 @@ function itemsBetween14and18Dollars(arr) {
   return output;
 }
 
-console.log(displayValues(itemsBetween14and18Dollars(items)));
+//console.log(displayValues(itemsBetween14and18Dollars(items)));
+
+//filter by GBP function
 
 function filterGBPcode(arr) {
   var output = [];
@@ -1073,20 +1078,21 @@ function filterGBPcode(arr) {
   return output;
 }
 
-console.log(displayValues(filterGBPcode(items)));
+//console.log(displayValues(filterGBPcode(items)));
 
 function filterMaterialWood(arr) {
   var output = [];
   for (var val of arr) {
-      if (arr.val.materials === 'wood') {
+      if (val.materials.indexOf('wood') !== -1) {
         output.push(val.materials);
       }
     }
-  }
   return output;
 }
 
-console.log(displayValues(filterMaterialWood(items)));
+//console.log(filterMaterialWood(items));
+
+//Calculate total materials function
 
 function calculateTotalMaterials(arr) {
   var output = [];
@@ -1098,16 +1104,18 @@ function calculateTotalMaterials(arr) {
   return output;
 }
 
-console.log(displayValuesWithMats(calculateTotalMaterials(items)));
+console.log(calculateTotalMaterials(items));
+
+//Calculate who made it.
 
 function calculateWhoMade(arr) {
   var output = [];
   for (var val of arr) {
-    if (val.who_made == "i_did") {
+    if (val.who_made === "i_did") {
       output.push(val)
     }
   }
-  return output.length;
+  return output.length + " were made by the seller.";
 }
 
-console.log(calculateWhoMade(items));
+//console.log(calculateWhoMade(items));
